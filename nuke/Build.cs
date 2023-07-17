@@ -146,7 +146,7 @@ internal partial class Build : NukeBuild
         .Executes(() =>
         {
             (ArtifactsDirectory / "packages")
-                .GlobFiles("**/*")
+                .GlobFiles("**/*.nupkg")
                 .ForEach(Nuget);
         });
 
