@@ -62,7 +62,7 @@ internal partial class Build : NukeBuild
         .OnlyWhenStatic(() => IsServerBuild)
         .Executes(() =>
         {
-            Version = $"{GetVersionPrefix()}-{GetVersionSuffix()}";
+            Version = $"{GetVersionPrefix()}{GetVersionSuffix()}";
         });
 
     private Target Clean => _ => _
@@ -107,7 +107,7 @@ internal partial class Build : NukeBuild
     {
         return Repository.Branch?.ToLower() switch
         {
-            PreviewBranch => $"{PreviewBranch}{DateTimeNow():HHmmss}",
+            PreviewBranch => $"-{PreviewBranch}{DateTimeNow():HHmmss}",
             _ => null
         };
     }
