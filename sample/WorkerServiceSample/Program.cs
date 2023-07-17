@@ -23,5 +23,4 @@ builder
     services.AddHostedService<Worker>();
 });
 
-IHost host = builder.Build();
-host.Run(code);
+builder.Build().Run(code);
