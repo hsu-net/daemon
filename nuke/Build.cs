@@ -57,9 +57,6 @@ internal partial class Build : NukeBuild
     [LatestNuGetVersion("Hsu.Daemon", IncludePrerelease = false)]
     private readonly NuGetVersion NuGetVersion;
 
-    [LatestNuGetVersion("Hsu.Daemon.macOS", IncludePrerelease = false)]
-    private readonly NuGetVersion NuGetVersion2;
-
     protected override void OnBuildInitialized()
     {
         base.OnBuildInitialized();
@@ -72,8 +69,7 @@ internal partial class Build : NukeBuild
         .OnlyWhenStatic(() => IsServerBuild)
         .Executes(() =>
         {
-            Log.Information("{@Version}", NuGetVersion);
-            Log.Information("{@Version}", NuGetVersion2);
+            Log.Debug("{@NuGetVersion}", NuGetVersion);
             Version = $"{GetVersionPrefix()}{GetVersionSuffix()}";
         });
 
@@ -112,7 +108,19 @@ internal partial class Build : NukeBuild
     private string GetVersionPrefix()
     {
         var dt = DateTimeNow();
-        return $"{dt:yyyy}.{(dt.Month - 1) / 3 + 1}{dt:MM}.{dt:dd}";
+        var main = $"{dt:yyyy}.{(dt.Month - 1) / 3 + 1}{dt:MM}.{dt:dd}";
+
+        if (Repository.Branch == MainBranch && NuGetVersion != null && NuGetVersion.Version != null)
+        {
+            //Major=2023, Minor=307, Build=17, Revision=0
+            var mmb =$"{NuGetVersion.Version.Major}.{NuGetVersion.Version.Minor}.{NuGetVersion.Version.Build}";
+            if (mmb == main && NuGetVersion.Version.Revision != 0)
+            {
+                main = $"{main}.{NuGetVersion.Revision + 1}";
+            }
+        }
+
+        return main;
     }
 
     private string GetVersionSuffix()
