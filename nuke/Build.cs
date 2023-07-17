@@ -1,9 +1,13 @@
+using NuGet.Versioning;
+
 using Nuke.Common;
 using Nuke.Common.CI;
 using Nuke.Common.Git;
 using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
+using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
+using Nuke.Common.Tools.NuGet;
 using Nuke.Common.Utilities.Collections;
 using Nuke.Components;
 
@@ -50,6 +54,12 @@ internal partial class Build : NukeBuild
     private AbsolutePath OutputDirectory => RootDirectory / "output";
     private AbsolutePath ArtifactsDirectory => RootDirectory / "artifacts";
 
+    [LatestNuGetVersion("Hsu.Daemon", IncludePrerelease = false)]
+    private readonly NuGetVersion NuGetVersion;
+
+    [LatestNuGetVersion("Hsu.Daemon.macOS", IncludePrerelease = false)]
+    private readonly NuGetVersion NuGetVersion2;
+
     protected override void OnBuildInitialized()
     {
         base.OnBuildInitialized();
@@ -62,6 +72,8 @@ internal partial class Build : NukeBuild
         .OnlyWhenStatic(() => IsServerBuild)
         .Executes(() =>
         {
+            Log.Information("{@Version}", NuGetVersion);
+            Log.Information("{@Version}", NuGetVersion2);
             Version = $"{GetVersionPrefix()}{GetVersionSuffix()}";
         });
 
@@ -170,5 +182,6 @@ internal partial class Build : NukeBuild
             .SetSource(source)
             .SetApiKey(key)
             .EnableSkipDuplicate()
+            .EnableNoServiceEndpoint()
         );
 }

@@ -58,7 +58,7 @@ internal partial class Build
         .DependsOn(Artifacts)
         .Executes(async () =>
         {
-            var tag = $"v{DateTime.Now:yyyyMMddHHmmss}";
+            var tag = $"v{Version}";
             GitHubTasks.GitHubClient.Credentials ??= new Credentials(GitHubActions.Token.NotNull());
             var release = await GitHubTasks.GitHubClient.Repository.Release.Create(
                 Repository.GetGitHubOwner(),
@@ -68,7 +68,7 @@ internal partial class Build
                     Name = tag,
                     Prerelease = true,
                     Draft = true,
-                    Body = $"Release at {DateTime.Now:yyyy-MM-dd HHmmss}"
+                    Body = $"Release v{Version} at {DateTime.Now:yyyy-MM-dd HH:mm:ss}"
                 });
 
             var uploads = ArtifactsDirectory.GlobFiles("**/*").NotNull().Select(async x =>
