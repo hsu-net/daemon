@@ -33,6 +33,13 @@ using static Nuke.Common.Tools.GitHub.GitHubTasks;
     OnPushBranches = new[] { MainBranch, PreviewBranch },
     InvokedTargets = new[] { nameof(Deploy) },
     ImportSecrets = new[] { nameof(NuGetApiKey), nameof(MyGetApiKey) },
+    WritePermissions = new GitHubActionsPermissions[]
+    {
+        GitHubActionsPermissions.IdToken,
+        GitHubActionsPermissions.Packages,
+        GitHubActionsPermissions.Pages,
+        GitHubActionsPermissions.Actions
+    },
     CacheKeyFiles = new string[0]
 )]
 internal partial class Build
