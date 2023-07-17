@@ -27,6 +27,10 @@ permissions:
   packages: write
   pages: write
   actions: write
+  id-token: read
+  packages: read
+  pages: read
+  actions: read
 
 jobs:
   ubuntu-latest:
