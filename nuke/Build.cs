@@ -113,7 +113,7 @@ internal partial class Build : NukeBuild
         if (Repository.Branch == MainBranch && NuGetVersion != null && NuGetVersion.Version != null)
         {
             //Major=2023, Minor=307, Build=17, Revision=0
-            var mmb =$"{NuGetVersion.Version.Major}.{NuGetVersion.Version.Minor}.{NuGetVersion.Version.Build}";
+            var mmb =$"{NuGetVersion.Version.Major}.{NuGetVersion.Version.Minor}.{NuGetVersion.Version.Build:00}";
             if (mmb == main && NuGetVersion.Version.Revision != 0)
             {
                 main = $"{main}.{NuGetVersion.Revision + 1}";
