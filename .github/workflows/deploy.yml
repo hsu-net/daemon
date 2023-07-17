@@ -22,16 +22,6 @@ on:
       - main
       - preview
 
-permissions:
-  id-token: write
-  packages: write
-  pages: write
-  actions: write
-  id-token: read
-  packages: read
-  pages: read
-  actions: read
-
 jobs:
   ubuntu-latest:
     name: ubuntu-latest
