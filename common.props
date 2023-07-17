@@ -1,9 +1,12 @@
 ﻿<Project>
   <PropertyGroup>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/hsu-net/daemon.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/hsu-net/daemon</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
-    <PackageProjectUrl>https://github.com/hsu-net/daemon.git</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/hsu-net/daemon/LICENSE</PackageLicenseUrl>
     <PackageTags>Service;Worker;Worker Service;Windows Service;Systemd;</PackageTags>
+    <!--<PackageLicenseUrl>https://github.com/hsu-net/daemon/LICENSE</PackageLicenseUrl>-->
+    <LicenseFile>LICENSE</LicenseFile>
     <Description>An easy service hosting library for Windows and Linux.</Description>
     <Company>Hsu</Company>
     <Authors>Hsu</Authors>
@@ -22,6 +25,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)icon.png" Pack="true" Visible="false" PackagePath="" />
+    <None Include="$(MSBuildThisFileDirectory)LICENSE" Pack="true" Visible="false" PackagePath="$(PackageLicenseFile)" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(ImplicitUsings)' == 'enable'">
