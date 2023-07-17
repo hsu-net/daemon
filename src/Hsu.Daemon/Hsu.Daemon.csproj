@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import
+            Project="$([MSBuild]::GetPathOfFileAbove(common.props, $(MSBuildProjectDirectory)))"
+            Condition="'$(MSBuildProjectDirectory)' != '' and '$([MSBuild]::GetPathOfFileAbove(common.props,$(MSBuildProjectDirectory)))' != ''"/>
+
+    <PropertyGroup>
+        <!--<TargetFramework>net6.0</TargetFramework>-->
+        <TargetFrameworks>net45;net461;netstandard2.0;net6.0;net7.0;</TargetFrameworks>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="CommandLineParser" Version="2.9.1"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="Startup.cs"/>
+        <Compile Remove="Cli\CliCommand.cs"/>
+        <Compile Remove="Cli\CliCommand.Install.cs"/>
+        <Compile Remove="Cli\CliCommand.Serving.cs"/>
+        <Compile Remove="Cli\CliCommand.Start.cs"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)'=='net45' or '$(TargetFramework)'=='net461'">
+        <Reference Include="System.ServiceProcess"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)'!='net45' and '$(TargetFramework)'!='net461'">
+        <PackageReference Include="System.ServiceProcess.ServiceController" Version="7.0.1"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <!-- Platforms supported by this SDK for analyzer warnings. 
+        Spec: https://github.com/dotnet/designs/blob/main/accepted/2020/platform-exclusion/platform-exclusion.md  -->
+        <SupportedPlatform Include="Windows"/>
+        <SupportedPlatform Include="Linux"/>
+        <!-- <SupportedPlatform Include="macOS" />-->
+    </ItemGroup>
+
+</Project>

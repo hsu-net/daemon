@@ -1,0 +1,10 @@
+﻿<Project>
+  <PropertyGroup Condition="'$(AssemblyName)'=='Hsu.Daemon'">
+    <Version>2023.307.17.0</Version>
+    <FileVersion>2023.307.17.0</FileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(AssemblyName)'=='Hsu.Daemon.Hosting'">
+    <Version>2023.307.17.0</Version>
+    <FileVersion>2023.307.17.0</FileVersion>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import
+            Project="$([MSBuild]::GetPathOfFileAbove(common.props, $(MSBuildProjectDirectory)))"
+            Condition="'$(MSBuildProjectDirectory)' != '' and '$([MSBuild]::GetPathOfFileAbove(common.props,$(MSBuildProjectDirectory)))' != ''"/>
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFrameworks>net45;net461;net462;net7.0;</TargetFrameworks>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(OS)' != 'Windows_NT'">
+        <UnsupportedPlatformMessage>Unsupported platform. This project is only supported on Windows.</UnsupportedPlatformMessage>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\Hsu.Daemon\Hsu.Daemon.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <!-- Platforms supported by this SDK for analyzer warnings. 
+        Spec: https://github.com/dotnet/designs/blob/main/accepted/2020/platform-exclusion/platform-exclusion.md  -->
+        <SupportedPlatform Include="Windows"/>
+    </ItemGroup>
+
+</Project>
