@@ -1,9 +1,7 @@
 ﻿using CommandLine;
 using CommandLine.Text;
-
 using Hsu.Daemon.Linux;
 using Hsu.Daemon.Windows;
-
 using System.Diagnostics;
 using System.Reflection;
 
@@ -13,20 +11,47 @@ public partial class CliParser
 {
     private readonly string _bin;
     private readonly string _name;
+    private readonly string? _description;
+    private readonly string? _display;
+    private readonly int? _delay;
+    private readonly Startup _startup;
     private readonly IServiceController _service;
     private readonly Type[] _types;
     private readonly Parser _parser;
 
     private ExitCode _exitCode;
 
-    public CliParser()
+    public CliParser(Action<ServiceOptions>? configure = null)
     {
         _bin = OsHelper.IsWindows() ? Process.GetCurrentProcess().MainModule!.FileName! : Environment.GetCommandLineArgs()[0];
-        _name = Path.GetFileNameWithoutExtension(_bin);
+
+        var options = new ServiceOptions();
+        configure?.Invoke(options);
+
+        _name = !options.Name.IsNullOrWhiteSpace()
+            ? options.Name
+            : Path.GetFileNameWithoutExtension(_bin);
+
+        if (!options.Description.IsNullOrWhiteSpace())
+        {
+            _description = options.Description;
+        }
+
+        if (!options.Display.IsNullOrWhiteSpace())
+        {
+            _display = options.Display;
+        }
+
+        if (options.Delay > TimeSpan.Zero)
+        {
+            _delay = (int)options.Delay.TotalSeconds;
+        }
+
+        _startup = configure == null ? Startup.Boot : options.Startup;
 
         _service = OsHelper.IsWindows()
-                ? new ServiceControlController()
-                : new SystemdController();
+            ? new ServiceControlController()
+            : new SystemdController();
         _types = LoadVerbs();
 
         _parser = new Parser(x =>
@@ -49,52 +74,59 @@ public partial class CliParser
         switch (verb)
         {
             case ServingVerb:
-                {
-                    Serving();
-                    break;
-                }
+            {
+                Serving();
+                break;
+            }
             case ConsoleVerb:
-                {
-                    ConsoleApplication();
-                    break;
-                }
+            {
+                ConsoleApplication();
+                break;
+            }
             case InstallVerb vb:
-                {
-                    Install(new ServiceOptions(_bin, vb.Startup, _name, vb.Description, vb.Display, TimeSpan.FromSeconds(vb.Delay)));
-                    break;
-                }
+            {
+                Install(new ServiceOptions(_bin
+                    , vb.Startup ?? _startup
+                    , _name
+                    , vb.Description.IsNullOrWhiteSpace() ? _description : vb.Description
+                    , vb.Display.IsNullOrWhiteSpace() ? _display : vb.Display
+                    , TimeSpan.FromSeconds(vb.Delay ?? _delay ?? -1)
+                ));
+                break;
+            }
             case UninstallVerb:
-                {
-                    Uninstall();
-                    break;
-                }
+            {
+                Uninstall();
+                break;
+            }
             case StatusVerb:
-                {
-                    Status();
-                    break;
-                }
+            {
+                Status();
+                break;
+            }
             case StartVerb:
-                {
-                    Start();
-                    break;
-                }
+            {
+                Start();
+                break;
+            }
             case StopVerb:
-                {
-                    Stop();
-                    break;
-                }
+            {
+                Stop();
+                break;
+            }
             case RestartVerb:
-                {
-                    Restart();
-                    break;
-                }
+            {
+                Restart();
+                break;
+            }
         }
+
         Console.Out.Flush();
-#if NET45
+        #if NET45
         return Task.FromResult(true);
-#else
+        #else
         return Task.CompletedTask;
-#endif
+        #endif
     }
 
     private void Run(CliVerb verb) => RunAsync(verb).ConfigureAwait(false).GetAwaiter().GetResult();

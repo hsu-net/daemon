@@ -10,14 +10,28 @@ public static class HostExtensions
         if (code is not (ExitCode.Serving or ExitCode.Console)) return;
         host.Run();
         if (code is ExitCode.Serving) return;
-        host.WaitForShutdown();
+        try
+        {
+            host.WaitForShutdown();
+        }
+        catch (Exception)
+        {
+            // ignored
+        }
     }
 
-    public static async Task RunAsync(this IHost host, ExitCode code)
+    public static async Task RunAsync(this IHost host, ExitCode code, CancellationToken cancellation = default)
     {
         if (code is not (ExitCode.Serving or ExitCode.Console)) return;
-        await host.RunAsync();
+        await host.RunAsync(cancellation);
         if (code is ExitCode.Serving) return;
-        await host.WaitForShutdownAsync();
+        try
+        {
+            await host.WaitForShutdownAsync(cancellation);
+        }
+        catch (Exception e)
+        {
+            // ignored
+        }
     }
 }

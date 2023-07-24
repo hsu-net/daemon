@@ -8,14 +8,14 @@ public abstract class CliVerb { }
 [Verb("install", false, new[] { "-i", "/i" }, HelpText = "Install this app as a service.")]
 public class InstallVerb : CliVerb
 {
-    [Option('t', "--startup", Required = false, HelpText = "The startup type of service.", Default = Startup.Boot)]
-    public Startup Startup { get; set; } = Startup.Boot;
+    [Option('t', "--startup", Required = false, HelpText = "The startup type of service.")]
+    public Startup? Startup { get; set; }
 
     [Option('d', "--description", Required = false, HelpText = "The description of service.")]
     public string Description { get; set; } = string.Empty;
 
     [Option('s', "--delay", Required = false, HelpText = "The delay seconds of service.")]
-    public int Delay { get; set; } = -1;
+    public int? Delay { get; set; }
 
     [Option('n', "--display", Required = false, HelpText = "The display of the service.")]
     public string Display { get; set; } = string.Empty;
