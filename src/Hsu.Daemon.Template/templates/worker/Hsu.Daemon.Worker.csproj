@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Hsu.Daemon.Hosting" Version="2023.307.24-preview152858" />
+        <PackageReference Include="Hsu.Daemon.Hosting" Version="2023.307.25" />
         <!--#if (Net461Chosen) -->
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
         <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="6.0.2" />

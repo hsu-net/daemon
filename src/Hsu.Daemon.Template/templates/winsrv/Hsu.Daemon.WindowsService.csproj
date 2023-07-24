@@ -13,7 +13,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Hsu.Daemon" Version="2023.307.24-preview152858"/>
+        <PackageReference Include="Hsu.Daemon" Version="2023.307.25"/>
     </ItemGroup>
 
     <ItemGroup>

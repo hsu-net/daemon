@@ -1,10 +1,11 @@
 ﻿using System.Diagnostics;
 using Hsu.Daemon.Windows;
+//-:cnd:noEmit
 #if NET5_0_OR_GREATER
 using System.Runtime.Versioning;
-
 [assembly: SupportedOSPlatform("windows")]
 #endif
+//+:cnd:noEmit
 
 var source = Path.GetFileNameWithoutExtension(Process.GetCurrentProcess().MainModule!.FileName)!;
 if (!EventLog.SourceExists(source))

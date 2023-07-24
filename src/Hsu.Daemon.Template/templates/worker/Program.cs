@@ -12,7 +12,9 @@ if (Environment.OSVersion.Platform == PlatformID.Win32NT)
 }
 else
 {
-    #if (!Net461Chosen)
+    #if (Net461Chosen)
+    throw new NotSupportedException();
+    #else
     builder = builder.UseSystemd();
     #endif
 }
