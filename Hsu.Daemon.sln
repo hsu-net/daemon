@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NukeBuild", "nuke\NukeBuild
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuke", "nuke", "{FFB768A9-47A8-4B2F-8506-BE56FE45BCD3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hsu.Daemon.Template", "src\Hsu.Daemon.Template\Hsu.Daemon.Template.csproj", "{1C2EB9DF-0AA9-4957-A34B-978E8ADC581D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{ACAEC3B9-6F54-4DAF-B091-DE50D0C2CC84}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E43FEF6C-3653-4E62-85D7-D059DAC49D41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E43FEF6C-3653-4E62-85D7-D059DAC49D41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C2EB9DF-0AA9-4957-A34B-978E8ADC581D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C2EB9DF-0AA9-4957-A34B-978E8ADC581D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C2EB9DF-0AA9-4957-A34B-978E8ADC581D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C2EB9DF-0AA9-4957-A34B-978E8ADC581D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{0F0ABDD1-C510-4745-8EB1-278F7432B0EF} = {1ABAA89E-242E-47EF-B735-1410AAE6033A}
 		{ACAEC3B9-6F54-4DAF-B091-DE50D0C2CC84} = {2A7A1CF5-D2DB-4E96-9F09-4C67F519D832}
 		{E43FEF6C-3653-4E62-85D7-D059DAC49D41} = {FFB768A9-47A8-4B2F-8506-BE56FE45BCD3}
+		{1C2EB9DF-0AA9-4957-A34B-978E8ADC581D} = {2A7A1CF5-D2DB-4E96-9F09-4C67F519D832}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {34A5513C-6E1D-4F4C-88BC-81517820D4C7}

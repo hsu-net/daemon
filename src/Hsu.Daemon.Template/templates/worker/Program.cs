@@ -1,6 +1,6 @@
 using Hsu.Daemon.Hosting;
 
-using WorkerServiceSample;
+using Hsu.Daemon.Worker;
 
 if (!Hsu.Daemon.Host.Runnable(args, out var code)) return;
 
@@ -12,7 +12,7 @@ if (Environment.OSVersion.Platform == PlatformID.Win32NT)
 }
 else
 {
-    #if NET5_0_OR_GREATER || NETCOREAPP2_1_OR_GREATER
+    #if (!Net461Chosen)
     builder = builder.UseSystemd();
     #endif
 }

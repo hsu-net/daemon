@@ -5,7 +5,6 @@
     <PackageProjectUrl>https://github.com/hsu-net/daemon</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
     <PackageTags>Service;Worker;Worker Service;Windows Service;Systemd;</PackageTags>
-    <!--<PackageLicenseUrl>https://github.com/hsu-net/daemon/LICENSE</PackageLicenseUrl>-->
     <LicenseFile>LICENSE</LicenseFile>
     <Description>An easy service hosting library for Windows and Linux.</Description>
     <Company>Hsu</Company>

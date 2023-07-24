@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>FrameworkParameter</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>11.0</LangVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(OS)' != 'Windows_NT'">
+        <UnsupportedPlatformMessage>Unsupported platform. This project is only supported on Windows.</UnsupportedPlatformMessage>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Hsu.Daemon" Version="2023.307.24-preview152858"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <!-- Platforms supported by this SDK for analyzer warnings. 
+        Spec: https://github.com/dotnet/designs/blob/main/accepted/2020/platform-exclusion/platform-exclusion.md  -->
+        <SupportedPlatform Include="Windows"/>
+    </ItemGroup>
+
+</Project>
