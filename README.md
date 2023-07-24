@@ -16,6 +16,8 @@
 | Hsu.Daemon | MyGet | [![MyGet](https://img.shields.io/myget/godsharp/v/Hsu.Daemon?style=flat-square&label=myget)](https://www.myget.org/feed/godsharp/package/nuget/Hsu.Daemon) | [![MyGet](https://img.shields.io/myget/godsharp/vpre/Hsu.Daemon?style=flat-square&label=myget)](https://www.myget.org/feed/godsharp/package/nuget/Hsu.Daemon) |
 | Hsu.Daemon.Hosting | Nuget | [![NuGet](https://img.shields.io/nuget/v/Hsu.Daemon.Hosting?style=flat-square)](https://www.nuget.org/packages/Hsu.Daemon.Hosting) | [![NuGet](https://img.shields.io/nuget/vpre/Hsu.Daemon.Hosting?style=flat-square)](https://www.nuget.org/packages/Hsu.Daemon.Hosting) |
 | Hsu.Daemon.Hosting | MyGet | [![MyGet](https://img.shields.io/myget/godsharp/v/Hsu.Daemon.Hosting?style=flat-square&label=myget)](https://www.myget.org/feed/godsharp/package/nuget/Hsu.Daemon.Hosting) | [![MyGet](https://img.shields.io/myget/godsharp/vpre/Hsu.Daemon.Hosting?style=flat-square&label=myget)](https://www.myget.org/feed/godsharp/package/nuget/Hsu.Daemon.Hosting) |
+| Hsu.Daemon.Template | Nuget | [![NuGet](https://img.shields.io/nuget/v/Hsu.Daemon.Template?style=flat-square)](https://www.nuget.org/packages/Hsu.Daemon.Template) | [![NuGet](https://img.shields.io/nuget/vpre/Hsu.Daemon.Template?style=flat-square)](https://www.nuget.org/packages/Hsu.Daemon.Template) |
+| Hsu.Daemon.Template | MyGet | [![MyGet](https://img.shields.io/myget/godsharp/v/Hsu.Daemon.Template?style=flat-square&label=myget)](https://www.myget.org/feed/godsharp/package/nuget/Hsu.Daemon.Template) | [![MyGet](https://img.shields.io/myget/godsharp/vpre/Hsu.Daemon.Template?style=flat-square&label=myget)](https://www.myget.org/feed/godsharp/package/nuget/Hsu.Daemon.Template) |
 
 ## Getting Started
 
