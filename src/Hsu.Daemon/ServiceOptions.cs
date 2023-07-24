@@ -6,11 +6,11 @@ namespace Hsu.Daemon;
 public record ServiceOptions
 {
     public string Bin { get; private set; } = string.Empty;
-    public Startup Startup { get; private set; } = Startup.Boot;
-    public string Name { get; private set; } = string.Empty;
-    public string Display { get; private set; } = string.Empty;
-    public string Description { get; private set; } = string.Empty;
-    public TimeSpan Delay { get; private set; } = TimeSpan.FromMinutes(1);
+    public Startup Startup { get; set; } = Startup.Boot;
+    public string Name { get; set; } = string.Empty;
+    public string Display { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
+    public TimeSpan Delay { get; set; } = TimeSpan.FromMinutes(1);
 
     internal ServiceOptions() { }
 
