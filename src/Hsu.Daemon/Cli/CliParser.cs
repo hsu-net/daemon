@@ -23,7 +23,15 @@ public partial class CliParser
 
     public CliParser(Action<ServiceOptions>? configure = null)
     {
-        _bin = OsHelper.IsWindows() ? Process.GetCurrentProcess().MainModule!.FileName! : Environment.GetCommandLineArgs()[0];
+        if (OsHelper.IsWindows())
+        {
+            var host = Process.GetCurrentProcess().MainModule!.FileName!;
+            _bin = host.EndsWith("dotnet.exe") ? Environment.GetCommandLineArgs()[0] : host;
+        }
+        else
+        {
+            _bin = Environment.GetCommandLineArgs()[0];
+        }
 
         var options = new ServiceOptions();
         configure?.Invoke(options);

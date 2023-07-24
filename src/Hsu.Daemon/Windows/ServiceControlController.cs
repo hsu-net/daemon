@@ -1,6 +1,7 @@
 ﻿#if NET5_0_OR_GREATER
 using System.Runtime.Versioning;
 #endif
+using System.Diagnostics;
 using Hsu.Daemon.Cli;
 
 // ReSharper disable UnusedMember.Local
@@ -25,7 +26,11 @@ public sealed class ServiceControlController : IServiceController
             Startup.Demand => "demand",
             _ => "delayed-auto"
         };
-        var installCommand = $"create {options.Name} binPath=\"{options.Bin} serving\" DisplayName=\"{options.Display}\" start={start}";
+
+        var host = Process.GetCurrentProcess().MainModule!.FileName!;
+        var bin = host.EndsWith("dotnet.exe", StringComparison.OrdinalIgnoreCase) ? $"{host} {options.Bin}" : options.Bin;
+
+        var installCommand = $"create {options.Name} binPath=\"{bin} serving\" DisplayName=\"{options.Display}\" start={start}";
         if (Command(installCommand) != 0) return false;
 
         return Command($"description {options.Name} \"{options.Description}\"") == 0;

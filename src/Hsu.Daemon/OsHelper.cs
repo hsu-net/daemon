@@ -1,4 +1,5 @@
-﻿namespace Hsu.Daemon;
+﻿// ReSharper disable UnusedMember.Global
+namespace Hsu.Daemon;
 
 internal static class OsHelper
 {
@@ -13,11 +14,20 @@ internal static class OsHelper
 
     public static bool IsLinux()
     {
-#if NET5_0_OR_GREATER
-        return OperatingSystem.IsWindows();
-#else
+        #if NET5_0_OR_GREATER
+        return OperatingSystem.IsLinux();
+        #else
         return Environment.OSVersion.Platform is PlatformID.Win32NT or PlatformID.Win32Windows or PlatformID.Win32S;
-#endif
+        #endif
+    }
+
+    public static bool IsMac()
+    {
+        #if NET5_0_OR_GREATER
+        return OperatingSystem.IsMacOS();
+        #else
+        return Environment.OSVersion.Platform is PlatformID.MacOSX;
+        #endif
     }
 
     public static string? GetDotNet()

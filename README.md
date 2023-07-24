@@ -4,6 +4,8 @@
 [![preview](https://github.com/hsu-net/daemon/actions/workflows/deploy.yml/badge.svg?branch=preview)](https://github.com/hsu-net/daemon/actions/workflows/deploy.yml)
 [![main](https://github.com/hsu-net/daemon/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/hsu-net/daemon/actions/workflows/deploy.yml)
 [![Nuke Build](https://img.shields.io/badge/nuke-build-yellow.svg)](https://github.com/nuke-build/nuke)
+![windows](https://img.shields.io/badge/OS-Windows-blue.svg)
+![linux](https://img.shields.io/badge/OS-Linux-blue.svg)
 
 
 ## Package Version

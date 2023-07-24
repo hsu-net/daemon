@@ -1,5 +1,5 @@
-﻿using Hsu.Daemon.Cli;
-
+﻿using System.Diagnostics;
+using Hsu.Daemon.Cli;
 using System.Runtime.Versioning;
 // ReSharper disable ConvertToUsingDeclaration
 
@@ -16,7 +16,11 @@ public class SystemdController : IServiceController
         var description = options.Description;
         if (options.Description.IsNullOrWhiteSpace()) description = $"{options.Name} service";
 
-        var dotnet = OsHelper.GetDotNet();
+        var host = Process.GetCurrentProcess().MainModule!.FileName!;
+        var dotnet = host.EndsWith($"{Path.PathSeparator}dotnet", StringComparison.OrdinalIgnoreCase)
+            ? host
+            : OsHelper.GetDotNet();
+        
         if (dotnet.IsNullOrWhiteSpace()) throw new ArgumentNullException(nameof(dotnet));
 
         using (var writer = new SystemdUnitWriter())
