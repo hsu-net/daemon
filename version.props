@@ -1,10 +1,18 @@
 ﻿<Project>
   <PropertyGroup Condition="'$(AssemblyName)'=='Hsu.Daemon'">
-    <Version>2023.307.17.0</Version>
-    <FileVersion>2023.307.17.0</FileVersion>
+    <Version>2023.308.29.0</Version>
+    <FileVersion>2023.308.29.0</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(AssemblyName)'=='Hsu.Daemon.Hosting'">
-    <Version>2023.307.17.0</Version>
-    <FileVersion>2023.307.17.0</FileVersion>
+    <Version>2023.308.29.0</Version>
+    <FileVersion>2023.308.29.0</FileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(AssemblyName)'=='Hsu.Daemon.Hosting.Legacy'">
+    <Version>2023.308.29.0</Version>
+    <FileVersion>2023.308.29.0</FileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(AssemblyName)'=='Hsu.Daemon.Hosting.Legacy.Web'">
+    <Version>2023.308.29.0</Version>
+    <FileVersion>2023.308.29.0</FileVersion>
   </PropertyGroup>
 </Project>

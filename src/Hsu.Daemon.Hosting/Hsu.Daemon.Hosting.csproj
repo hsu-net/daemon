@@ -30,4 +30,6 @@
     <ProjectReference Include="..\Hsu.Daemon\Hsu.Daemon.csproj" />
   </ItemGroup>
 
+  <Import Project="..\Hsu.Daemon.Hosting.Shared\Hsu.Daemon.Hosting.Shared.projitems" Label="Shared" />
+
 </Project>

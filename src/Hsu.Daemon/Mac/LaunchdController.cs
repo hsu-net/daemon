@@ -35,12 +35,12 @@ internal class LaunchdController : IServiceController
         }
 
         if (options.Startup == Startup.Demand) return true;
-        return Command($"load -w -F {options.Name}") == 0;
+        return Command($"load {options.Name}") == 0;
     }
 
     public bool Uninstall(string name)
     {
-        return Command($"unload -w -F {name}") == 0;
+        return Command($"unload -w {name}") == 0;
     }
 
     public void Start(string name)
@@ -60,7 +60,12 @@ internal class LaunchdController : IServiceController
 
     public ServiceStatus Status(string name)
     {
-        var ret1 = Command($"is-active {name}", out var output1);
+        var ret1 = Command($"list | grep {name}", out var output1);
+
+        if (output1.IsNullOrWhiteSpace())
+        {
+            
+        }
         
         if (ret1 == 0 && output1.Equals("active", StringComparison.OrdinalIgnoreCase))
         {

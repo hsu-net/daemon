@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="$([MSBuild]::GetPathOfFileAbove(common.props, $(MSBuildProjectDirectory)))" Condition="'$(MSBuildProjectDirectory)' != '' and '$([MSBuild]::GetPathOfFileAbove(common.props,$(MSBuildProjectDirectory)))' != ''" />
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <RootNamespace>Hsu.Daemon.Hosting</RootNamespace>
+        <DefineConstants>$(DefineConstants);WEB;</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Hsu.Daemon\Hsu.Daemon.csproj" />
+    </ItemGroup>
+
+    <Import Project="..\Hsu.Daemon.Hosting.Shared\Hsu.Daemon.Hosting.Shared.projitems" Label="Shared" />
+
+</Project>
