@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <IsTestProject Condition="$(MSBuildProjectFullPath.Contains('test')) and ($(MSBuildProjectName.EndsWith('.Tests')) or $(MSBuildProjectName.EndsWith('.TestBase')))">true</IsTestProject>
-    <IsSampleProject Condition="$(MSBuildProjectFullPath.Contains('sample')) and $(MSBuildProjectName.EndsWith('Sample'))">true</IsSampleProject>
+    <IsSampleProject Condition="$(MSBuildProjectFullPath.Contains('sample'))">true</IsSampleProject>
     <IsAppProject Condition="$(MSBuildProjectFullPath.Contains('\app\')) or $(MSBuildProjectFullPath.Contains('/app/'))">true</IsAppProject>
   </PropertyGroup>
 

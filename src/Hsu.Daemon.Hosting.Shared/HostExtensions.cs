@@ -15,13 +15,20 @@ public static class HostExtensions
     public static void Run(this IHost host, ExitCode code)
     {
         if (code is not (ExitCode.Serving or ExitCode.Console)) return;
-        host.Start();
-        if (code is ExitCode.Serving) return;
+        
         try
         {
-            host.WaitForShutdown();
+            #if WEB
+            if (code is ExitCode.Serving)
+            {
+                host.RunAsService();
+                return;
+            }
+            #endif
+        
+            host.Run();
         }
-        catch (Exception)
+        catch (Exception e)
         {
             // ignored
         }
@@ -30,15 +37,19 @@ public static class HostExtensions
     public static async Task RunAsync(this IHost host, ExitCode code, CancellationToken cancellation = default)
     {
         if (code is not (ExitCode.Serving or ExitCode.Console)) return;
-        #if WEB
-        host.RunAsService();
-        #else
-        await host.RunAsync(cancellation);
-        #endif
-        if (code is ExitCode.Serving) return;
+
         try
         {
-            await host.WaitForShutdownAsync(cancellation);
+            #if WEB
+            if (code is ExitCode.Serving)
+            {
+                await Task.Yield();
+                host.RunAsService();
+                return;
+            }
+            #endif
+        
+            await host.RunAsync(cancellation);
         }
         catch (Exception e)
         {
