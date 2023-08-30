@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Hsu.Daemon.Hosting.Legacy.Web\Hsu.Daemon.Hosting.Legacy.Web.csproj" />
+        <ProjectReference Include="..\..\src\Hsu.Daemon.Hosting.Web.Legacy\Hsu.Daemon.Hosting.Web.Legacy.csproj" />
     </ItemGroup>
 
     <ItemGroup>

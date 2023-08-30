@@ -15,7 +15,7 @@
     <Version>2023.308.30.0</Version>
     <FileVersion>2023.308.30.0</FileVersion>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(AssemblyName)'=='Hsu.Daemon.Hosting.Legacy.Web'">
+  <PropertyGroup Condition="'$(AssemblyName)'=='Hsu.Daemon.Hosting.Web.Legacy'">
     <Version>2023.308.30.0</Version>
     <FileVersion>2023.308.30.0</FileVersion>
   </PropertyGroup>
