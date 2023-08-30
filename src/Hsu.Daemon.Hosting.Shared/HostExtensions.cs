@@ -1,5 +1,6 @@
 ﻿using Hsu.Daemon.Cli;
 #if WEB
+using Microsoft.AspNetCore.Hosting.WindowsServices;
 using Microsoft.AspNetCore.Hosting;
 using IHost = Microsoft.AspNetCore.Hosting.IWebHost;
 #else
@@ -29,7 +30,11 @@ public static class HostExtensions
     public static async Task RunAsync(this IHost host, ExitCode code, CancellationToken cancellation = default)
     {
         if (code is not (ExitCode.Serving or ExitCode.Console)) return;
+        #if WEB
+        host.RunAsService();
+        #else
         await host.RunAsync(cancellation);
+        #endif
         if (code is ExitCode.Serving) return;
         try
         {
