@@ -1,7 +1,6 @@
 ﻿using CommandLine;
 using CommandLine.Text;
-using Hsu.Daemon.Linux;
-using Hsu.Daemon.Windows;
+
 using System.Diagnostics;
 using System.Reflection;
 
@@ -21,7 +20,7 @@ public partial class CliParser
 
     private ExitCode _exitCode;
 
-    public CliParser(Action<ServiceOptions>? configure = null)
+    public CliParser(IServiceController serviceController, Action<ServiceOptions>? configure = null)
     {
         if (OsHelper.IsWindows())
         {
@@ -57,9 +56,8 @@ public partial class CliParser
 
         _startup = configure == null ? Startup.Boot : options.Startup;
 
-        _service = OsHelper.IsWindows()
-            ? new ServiceControlController()
-            : new SystemdController();
+        _service = serviceController;
+
         _types = LoadVerbs();
 
         _parser = new Parser(x =>
@@ -82,59 +80,59 @@ public partial class CliParser
         switch (verb)
         {
             case ServingVerb:
-            {
-                Serving();
-                break;
-            }
+                {
+                    Serving();
+                    break;
+                }
             case ConsoleVerb:
-            {
-                ConsoleApplication();
-                break;
-            }
+                {
+                    ConsoleApplication();
+                    break;
+                }
             case InstallVerb vb:
-            {
-                Install(new ServiceOptions(_bin
-                    , vb.Startup ?? _startup
-                    , _name
-                    , vb.Description.IsNullOrWhiteSpace() ? _description : vb.Description
-                    , vb.Display.IsNullOrWhiteSpace() ? _display : vb.Display
-                    , TimeSpan.FromSeconds(vb.Delay ?? _delay ?? -1)
-                ));
-                break;
-            }
+                {
+                    Install(new ServiceOptions(_bin
+                        , vb.Startup ?? _startup
+                        , _name
+                        , vb.Description.IsNullOrWhiteSpace() ? _description : vb.Description
+                        , vb.Display.IsNullOrWhiteSpace() ? _display : vb.Display
+                        , TimeSpan.FromSeconds(vb.Delay ?? _delay ?? -1)
+                    ));
+                    break;
+                }
             case UninstallVerb:
-            {
-                Uninstall();
-                break;
-            }
+                {
+                    Uninstall();
+                    break;
+                }
             case StatusVerb:
-            {
-                Status();
-                break;
-            }
+                {
+                    Status();
+                    break;
+                }
             case StartVerb:
-            {
-                Start();
-                break;
-            }
+                {
+                    Start();
+                    break;
+                }
             case StopVerb:
-            {
-                Stop();
-                break;
-            }
+                {
+                    Stop();
+                    break;
+                }
             case RestartVerb:
-            {
-                Restart();
-                break;
-            }
+                {
+                    Restart();
+                    break;
+                }
         }
 
         Console.Out.Flush();
-        #if NET45
+#if NET45
         return Task.FromResult(true);
-        #else
+#else
         return Task.CompletedTask;
-        #endif
+#endif
     }
 
     private void Run(CliVerb verb) => RunAsync(verb).ConfigureAwait(false).GetAwaiter().GetResult();

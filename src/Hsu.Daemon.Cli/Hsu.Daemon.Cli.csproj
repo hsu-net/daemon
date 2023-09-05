@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\Hsu.Daemon.Shared\Hsu.Daemon.Shared.projitems" Label="Shared" />
+
+  <Import Project="$([MSBuild]::GetPathOfFileAbove(common.props, $(MSBuildProjectDirectory)))" Condition="'$(MSBuildProjectDirectory)' != '' and '$([MSBuild]::GetPathOfFileAbove(common.props,$(MSBuildProjectDirectory)))' != ''" />
+
+  <PropertyGroup>
+    <RootNamespace>Hsu.Daemon</RootNamespace>
+    <TargetFrameworks>net45;net461;netstandard2.0;</TargetFrameworks>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Hsu.Daemon.Abstractions\Hsu.Daemon.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.9.1" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  
+</Project>

@@ -1,22 +1,26 @@
 ﻿<Project>
-  <PropertyGroup Condition="'$(AssemblyName)'=='Hsu.Daemon'">
-    <Version>2023.308.30.0</Version>
-    <FileVersion>2023.308.30.0</FileVersion>
+  <PropertyGroup Condition="'$(AssemblyName)'=='Hsu.Daemon.Abstractions'">
+    <Version>2023.309.05.0</Version>
+    <FileVersion>2023.309.05.0</FileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(AssemblyName)'=='Hsu.Daemon.Systemd'">
+    <Version>2023.309.05.0</Version>
+    <FileVersion>2023.309.05.0</FileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(AssemblyName)'=='Hsu.Daemon.Windows'">
+    <Version>2023.309.05.0</Version>
+    <FileVersion>2023.309.05.0</FileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(AssemblyName)'=='Hsu.Daemon.Cli'">
+    <Version>2023.309.05.0</Version>
+    <FileVersion>2023.309.05.0</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(AssemblyName)'=='Hsu.Daemon.Hosting'">
-    <Version>2023.308.30.0</Version>
-    <FileVersion>2023.308.30.0</FileVersion>
+    <Version>2023.309.05.0</Version>
+    <FileVersion>2023.309.05.0</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(AssemblyName)'=='Hsu.Daemon.Hosting.Web'">
-    <Version>2023.308.30.0</Version>
-    <FileVersion>2023.308.30.0</FileVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(AssemblyName)'=='Hsu.Daemon.Hosting.Legacy'">
-    <Version>2023.308.30.0</Version>
-    <FileVersion>2023.308.30.0</FileVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(AssemblyName)'=='Hsu.Daemon.Hosting.Web.Legacy'">
-    <Version>2023.308.30.0</Version>
-    <FileVersion>2023.308.30.0</FileVersion>
+    <Version>2023.309.05.0</Version>
+    <FileVersion>2023.309.05.0</FileVersion>
   </PropertyGroup>
 </Project>

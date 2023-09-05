@@ -1,28 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <Import Project="..\Hsu.Daemon.Shared\Hsu.Daemon.Shared.projitems" Label="Shared" />
+
   <Import Project="$([MSBuild]::GetPathOfFileAbove(common.props, $(MSBuildProjectDirectory)))" Condition="'$(MSBuildProjectDirectory)' != '' and '$([MSBuild]::GetPathOfFileAbove(common.props,$(MSBuildProjectDirectory)))' != ''" />
 
   <PropertyGroup>
-    <!--<TargetFramework>net6.0</TargetFramework>-->
-    <TargetFrameworks>net45;net461;netstandard2.0;net6.0;net7.0;</TargetFrameworks>
+    <RootNamespace>Hsu.Daemon</RootNamespace>
+    <TargetFrameworks>net45;net461;netstandard2.0;</TargetFrameworks>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommandLineParser" Version="2.9.1" />
+    <ProjectReference Include="..\Hsu.Daemon.Abstractions\Hsu.Daemon.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Startup.cs" />
-    <Compile Remove="Cli\CliCommand.cs" />
-    <Compile Remove="Cli\CliCommand.Install.cs" />
-    <Compile Remove="Cli\CliCommand.Serving.cs" />
-    <Compile Remove="Cli\CliCommand.Start.cs" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net45' or '$(TargetFramework)'=='net461'">
@@ -30,15 +27,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'!='net45' and '$(TargetFramework)'!='net461'">
-    <PackageReference Include="System.ServiceProcess.ServiceController" Version="7.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <!-- Platforms supported by this SDK for analyzer warnings. 
-        Spec: https://github.com/dotnet/designs/blob/main/accepted/2020/platform-exclusion/platform-exclusion.md  -->
-    <SupportedPlatform Include="Windows" />
-    <SupportedPlatform Include="Linux" />
-    <!-- <SupportedPlatform Include="macOS" />-->
+    <PackageReference Include="System.ServiceProcess.ServiceController" Version="4.5.0" />
   </ItemGroup>
 
 </Project>

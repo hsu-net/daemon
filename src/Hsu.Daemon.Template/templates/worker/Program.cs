@@ -1,8 +1,10 @@
+using Hsu.Daemon;
 using Hsu.Daemon.Hosting;
 
-using Hsu.Daemon.Worker;
+using WorkerServiceSample;
 
-if (!Hsu.Daemon.Host.Runnable(args, out var code)) return;
+var daemond = Daemond.CreateBuilder(args).UseWindowsServices().Build();
+if (!daemond.Runnable()) return;
 
 var builder = Host.CreateDefaultBuilder(args);
 
@@ -12,11 +14,11 @@ if (Environment.OSVersion.Platform == PlatformID.Win32NT)
 }
 else
 {
-    #if (Net461Chosen)
+#if (Net461Chosen)
     throw new NotSupportedException();
-    #else
+#else
     builder = builder.UseSystemd();
-    #endif
+#endif
 }
 
 builder
@@ -25,4 +27,4 @@ builder
     services.AddHostedService<Worker>();
 });
 
-builder.Build().Run(code);
+builder.Build().Run(daemond.Code);

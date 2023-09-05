@@ -1,20 +1,22 @@
-﻿using System;
+﻿using Hsu.Daemon;
 using Hsu.Daemon.Hosting;
+
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
 namespace NetFxAspNetCore
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            if (!Hsu.Daemon.Host.Runnable(args, out var code)) return;
+            var daemond = Daemond.CreateBuilder(args).UseWindowsServices().Build();
+            if (!daemond.Runnable()) return;
             var builder = WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>();
 
             var app = builder.Build();
-            app.Run(code);
+            app.Run(daemond.Code);
         }
     }
 }

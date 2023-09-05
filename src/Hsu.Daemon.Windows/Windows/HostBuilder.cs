@@ -1,32 +1,30 @@
-﻿
-// ReSharper disable MemberCanBePrivate.Global
-
-using System.Runtime.Versioning;
+﻿// ReSharper disable MemberCanBePrivate.Global
 
 namespace Hsu.Daemon.Windows;
 
 #if NET5_0_OR_GREATER
 [SupportedOSPlatform("windows")]
 #endif
-public sealed class DaemonBuilder
+
+public sealed class HostBuilder
 {
     private Action? _start;
     private Action? _stop;
     private Action? _dispose;
 
-    public DaemonBuilder OnStart(Action configure)
+    public HostBuilder OnStart(Action configure)
     {
         _start = configure;
         return this;
     }
 
-    public DaemonBuilder OnStop(Action configure)
+    public HostBuilder OnStop(Action configure)
     {
         _stop = configure;
         return this;
     }
 
-    public DaemonBuilder OnDispose(Action configure)
+    public HostBuilder OnDispose(Action configure)
     {
         _dispose = configure;
         return this;
@@ -37,14 +35,6 @@ public sealed class DaemonBuilder
         if (_start == null) throw new InvalidOperationException("The start action is required");
         if (_stop == null) throw new InvalidOperationException("The stop action is required");
         return new LambdaService(_start, _stop, _dispose);
-    }
-
-    internal void Run(string[] args)
-    {
-        if (_start == null) throw new InvalidOperationException("The start action is required");
-        if (_stop == null) throw new InvalidOperationException("The stop action is required");
-
-        DaemonHost.Run(Build(), args);
     }
 }
 

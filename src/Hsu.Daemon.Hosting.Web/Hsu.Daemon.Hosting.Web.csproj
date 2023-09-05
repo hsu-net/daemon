@@ -1,8 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <Import
-            Project="$([MSBuild]::GetPathOfFileAbove(common.props, $(MSBuildProjectDirectory)))"
-            Condition="'$(MSBuildProjectDirectory)' != '' and '$([MSBuild]::GetPathOfFileAbove(common.props,$(MSBuildProjectDirectory)))' != ''"/>
+    <Import Project="$([MSBuild]::GetPathOfFileAbove(common.props, $(MSBuildProjectDirectory)))" Condition="'$(MSBuildProjectDirectory)' != '' and '$([MSBuild]::GetPathOfFileAbove(common.props,$(MSBuildProjectDirectory)))' != ''" />
 
     <Import Project="..\Hsu.Daemon.Hosting.Shared\Hsu.Daemon.Hosting.Shared.projitems" Label="Shared" />
 
@@ -13,9 +11,6 @@
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
         <DefineConstants>$(DefineConstants);WEB;</DefineConstants>
     </PropertyGroup>
-    <ItemGroup>
-        <ProjectReference Include="..\Hsu.Daemon\Hsu.Daemon.csproj" />
-    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
@@ -42,6 +37,10 @@
 
     <ItemGroup Condition="'$(TargetFramework)'=='net461' or '$(TargetFramework)'=='netstandard2.0'">
         <PackageReference Include="Microsoft.AspNetCore.Hosting.WindowsServices" Version="[2.1.0,2.2.0]" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Hsu.Daemon.Abstractions\Hsu.Daemon.Abstractions.csproj" />
     </ItemGroup>
 
 </Project>

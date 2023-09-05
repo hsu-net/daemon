@@ -1,8 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import
-          Project="$([MSBuild]::GetPathOfFileAbove(common.props, $(MSBuildProjectDirectory)))"
-          Condition="'$(MSBuildProjectDirectory)' != '' and '$([MSBuild]::GetPathOfFileAbove(common.props,$(MSBuildProjectDirectory)))' != ''"/>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove(common.props, $(MSBuildProjectDirectory)))" Condition="'$(MSBuildProjectDirectory)' != '' and '$([MSBuild]::GetPathOfFileAbove(common.props,$(MSBuildProjectDirectory)))' != ''" />
 
   <Import Project="..\Hsu.Daemon.Hosting.Shared\Hsu.Daemon.Hosting.Shared.projitems" Label="Shared" />
 
@@ -11,10 +9,6 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Hsu.Daemon\Hsu.Daemon.csproj" />
-  </ItemGroup>
   
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
@@ -49,5 +43,9 @@
   
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0' or '$(TargetFramework)'=='net461'">
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="2.1.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Hsu.Daemon.Abstractions\Hsu.Daemon.Abstractions.csproj" />
   </ItemGroup>
 </Project>

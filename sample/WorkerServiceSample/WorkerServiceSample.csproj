@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Worker">
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
 
     <Import Project="$([MSBuild]::GetPathOfFileAbove(common.props, $(MSBuildProjectDirectory)))" Condition="'$(MSBuildProjectDirectory)' != '' and '$([MSBuild]::GetPathOfFileAbove(common.props,$(MSBuildProjectDirectory)))' != ''" />
 
@@ -13,8 +13,10 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\src\Hsu.Daemon.Cli\Hsu.Daemon.Cli.csproj" />
         <ProjectReference Include="..\..\src\Hsu.Daemon.Hosting\Hsu.Daemon.Hosting.csproj" />
-        <ProjectReference Include="..\..\src\Hsu.Daemon\Hsu.Daemon.csproj" />
+        <ProjectReference Include="..\..\src\Hsu.Daemon.Systemd\Hsu.Daemon.Systemd.csproj" />
+        <ProjectReference Include="..\..\src\Hsu.Daemon.Windows\Hsu.Daemon.Windows.csproj" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">

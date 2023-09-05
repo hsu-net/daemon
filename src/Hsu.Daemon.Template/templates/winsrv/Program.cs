@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using Hsu.Daemon.Windows;
 //-:cnd:noEmit
 #if NET5_0_OR_GREATER
 using System.Runtime.Versioning;
@@ -18,11 +17,15 @@ var timer = new Timer(_ =>
     WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"));
 },null,TimeSpan.FromMinutes(1), TimeSpan.FromSeconds(5));
 
-DaemonHost
-    .Run(x => x
-            .OnStart(OnStart)
-            .OnStop(OnStop)
-        , args);
+var daemond = Daemond.CreateBuilder(args).UseWindowsServices().Build();
+if (!daemond.Runnable()) return;
+
+daemond
+    .Configure(x => x
+        .OnStart(OnStart)
+        .OnStop(OnStop)
+    )
+    .Run();
 
 void OnStart()
 {

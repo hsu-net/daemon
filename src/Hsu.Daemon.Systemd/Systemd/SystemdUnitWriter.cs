@@ -3,7 +3,7 @@
 // ReSharper disable UnusedMember.Global
 // ReSharper disable PropertyCanBeMadeInitOnly.Global
 
-namespace Hsu.Daemon.Linux;
+namespace Hsu.Daemon.Systemd;
 
 internal sealed record SystemdUnitWriter : IDisposable
 {
@@ -39,7 +39,7 @@ internal sealed record SystemdUnitWriter : IDisposable
 
     public void Write()
     {
-        if (Bin.IsNullOrWhiteSpace()) throw new ArgumentNullException(nameof(Bin));
+        if (Bin.IsNullOrWhiteSpace()) throw new InvalidDataException("The properity `Bin` is null");
 
         if (Name.IsNullOrWhiteSpace())
         {

@@ -1,7 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
-    <Import
-            Project="$([MSBuild]::GetPathOfFileAbove(common.props, $(MSBuildProjectDirectory)))"
-            Condition="'$(MSBuildProjectDirectory)' != '' and '$([MSBuild]::GetPathOfFileAbove(common.props,$(MSBuildProjectDirectory)))' != ''"/>
+    <Import Project="$([MSBuild]::GetPathOfFileAbove(common.props, $(MSBuildProjectDirectory)))" Condition="'$(MSBuildProjectDirectory)' != '' and '$([MSBuild]::GetPathOfFileAbove(common.props,$(MSBuildProjectDirectory)))' != ''" />
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
@@ -9,7 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Hsu.Daemon.Hosting.Web.Legacy\Hsu.Daemon.Hosting.Web.Legacy.csproj" />
+        <ProjectReference Include="..\..\src\Hsu.Daemon.Cli\Hsu.Daemon.Cli.csproj" />
+        <ProjectReference Include="..\..\src\Hsu.Daemon.Hosting.Web\Hsu.Daemon.Hosting.Web.csproj" />
+        <ProjectReference Include="..\..\src\Hsu.Daemon.Windows\Hsu.Daemon.Windows.csproj" />
     </ItemGroup>
 
     <ItemGroup>

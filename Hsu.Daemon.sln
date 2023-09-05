@@ -5,8 +5,6 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2A7A1CF5-D2DB-4E96-9F09-4C67F519D832}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hsu.Daemon", "src\Hsu.Daemon\Hsu.Daemon.csproj", "{8AE256AD-246F-404B-8C84-4E6276301BB1}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{1ABAA89E-242E-47EF-B735-1410AAE6033A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowsServiceSample", "sample\WindowsServiceSample\WindowsServiceSample.csproj", "{1C982759-83BE-494F-AE32-CF869E17A44E}"
@@ -19,17 +17,27 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NukeBuild", "nuke\NukeBuild
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuke", "nuke", "{FFB768A9-47A8-4B2F-8506-BE56FE45BCD3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hsu.Daemon.Template", "src\Hsu.Daemon.Template\Hsu.Daemon.Template.csproj", "{1C2EB9DF-0AA9-4957-A34B-978E8ADC581D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hsu.Daemon.Hosting.Legacy", "src\Hsu.Daemon.Hosting.Legacy\Hsu.Daemon.Hosting.Legacy.csproj", "{F2ABE2A1-E2FC-4299-A6E1-657EB47F81FE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hsu.Daemon.Hosting.Web.Legacy", "src\Hsu.Daemon.Hosting.Web.Legacy\Hsu.Daemon.Hosting.Web.Legacy.csproj", "{0A5FDF0B-0574-44E0-9C7D-342876E79AF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hsu.Daemon.Template", "src\Hsu.Daemon.Template\Hsu.Daemon.Template.csproj", "{1C2EB9DF-0AA9-4957-A34B-978E8ADC581D}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Hsu.Daemon.Hosting.Shared", "src\Hsu.Daemon.Hosting.Shared\Hsu.Daemon.Hosting.Shared.shproj", "{E342C211-8A52-4F62-8F26-ECD3E241E74D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hsu.Daemon.Hosting.Web", "src\Hsu.Daemon.Hosting.Web\Hsu.Daemon.Hosting.Web.csproj", "{C1E6A7FC-977A-4429-8908-B7A7C4AEB3BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hsu.Daemon.Hosting.Web", "src\Hsu.Daemon.Hosting.Web\Hsu.Daemon.Hosting.Web.csproj", "{C1E6A7FC-977A-4429-8908-B7A7C4AEB3BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetFxAspNetCore", "sample\NetFxAspNetCore\NetFxAspNetCore.csproj", "{4CC37F70-CB8C-4EF2-8F13-883926FE8FC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetFxAspNetCore", "sample\NetFxAspNetCore\NetFxAspNetCore.csproj", "{4CC37F70-CB8C-4EF2-8F13-883926FE8FC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hsu.Daemon.Abstractions", "src\Hsu.Daemon.Abstractions\Hsu.Daemon.Abstractions.csproj", "{16F08546-F18D-46EE-A551-5092A4958FBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hsu.Daemon.Windows", "src\Hsu.Daemon.Windows\Hsu.Daemon.Windows.csproj", "{57C85C38-D056-4736-848E-B714045E643E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hsu.Daemon.Systemd", "src\Hsu.Daemon.Systemd\Hsu.Daemon.Systemd.csproj", "{F989452B-D7D3-4A50-95CD-58DBD12200FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{983B9F86-79B2-4AFC-ACA3-CACB90BA91BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hsu.Daemon.Cli", "src\Hsu.Daemon.Cli\Hsu.Daemon.Cli.csproj", "{14FC6F68-ED87-455F-B862-942904E595FE}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Hsu.Daemon.Shared", "src\Hsu.Daemon.Shared\Hsu.Daemon.Shared.shproj", "{88EFAC4D-FFD1-4AB8-94B7-6F15839B3F3C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "hosting", "hosting", "{FAF39C9E-7F28-4459-9DEA-8D27CE74DDF4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +45,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8AE256AD-246F-404B-8C84-4E6276301BB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8AE256AD-246F-404B-8C84-4E6276301BB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8AE256AD-246F-404B-8C84-4E6276301BB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8AE256AD-246F-404B-8C84-4E6276301BB1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1C982759-83BE-494F-AE32-CF869E17A44E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1C982759-83BE-494F-AE32-CF869E17A44E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C982759-83BE-494F-AE32-CF869E17A44E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -59,14 +63,6 @@ Global
 		{1C2EB9DF-0AA9-4957-A34B-978E8ADC581D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C2EB9DF-0AA9-4957-A34B-978E8ADC581D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C2EB9DF-0AA9-4957-A34B-978E8ADC581D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F2ABE2A1-E2FC-4299-A6E1-657EB47F81FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F2ABE2A1-E2FC-4299-A6E1-657EB47F81FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F2ABE2A1-E2FC-4299-A6E1-657EB47F81FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F2ABE2A1-E2FC-4299-A6E1-657EB47F81FE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0A5FDF0B-0574-44E0-9C7D-342876E79AF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0A5FDF0B-0574-44E0-9C7D-342876E79AF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0A5FDF0B-0574-44E0-9C7D-342876E79AF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0A5FDF0B-0574-44E0-9C7D-342876E79AF9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C1E6A7FC-977A-4429-8908-B7A7C4AEB3BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C1E6A7FC-977A-4429-8908-B7A7C4AEB3BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1E6A7FC-977A-4429-8908-B7A7C4AEB3BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -75,24 +71,54 @@ Global
 		{4CC37F70-CB8C-4EF2-8F13-883926FE8FC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CC37F70-CB8C-4EF2-8F13-883926FE8FC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CC37F70-CB8C-4EF2-8F13-883926FE8FC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16F08546-F18D-46EE-A551-5092A4958FBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16F08546-F18D-46EE-A551-5092A4958FBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16F08546-F18D-46EE-A551-5092A4958FBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16F08546-F18D-46EE-A551-5092A4958FBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57C85C38-D056-4736-848E-B714045E643E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57C85C38-D056-4736-848E-B714045E643E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57C85C38-D056-4736-848E-B714045E643E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57C85C38-D056-4736-848E-B714045E643E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F989452B-D7D3-4A50-95CD-58DBD12200FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F989452B-D7D3-4A50-95CD-58DBD12200FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F989452B-D7D3-4A50-95CD-58DBD12200FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F989452B-D7D3-4A50-95CD-58DBD12200FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14FC6F68-ED87-455F-B862-942904E595FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14FC6F68-ED87-455F-B862-942904E595FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14FC6F68-ED87-455F-B862-942904E595FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14FC6F68-ED87-455F-B862-942904E595FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{8AE256AD-246F-404B-8C84-4E6276301BB1} = {2A7A1CF5-D2DB-4E96-9F09-4C67F519D832}
 		{1C982759-83BE-494F-AE32-CF869E17A44E} = {1ABAA89E-242E-47EF-B735-1410AAE6033A}
 		{0F0ABDD1-C510-4745-8EB1-278F7432B0EF} = {1ABAA89E-242E-47EF-B735-1410AAE6033A}
-		{ACAEC3B9-6F54-4DAF-B091-DE50D0C2CC84} = {2A7A1CF5-D2DB-4E96-9F09-4C67F519D832}
+		{ACAEC3B9-6F54-4DAF-B091-DE50D0C2CC84} = {FAF39C9E-7F28-4459-9DEA-8D27CE74DDF4}
 		{E43FEF6C-3653-4E62-85D7-D059DAC49D41} = {FFB768A9-47A8-4B2F-8506-BE56FE45BCD3}
 		{1C2EB9DF-0AA9-4957-A34B-978E8ADC581D} = {2A7A1CF5-D2DB-4E96-9F09-4C67F519D832}
-		{F2ABE2A1-E2FC-4299-A6E1-657EB47F81FE} = {2A7A1CF5-D2DB-4E96-9F09-4C67F519D832}
-		{0A5FDF0B-0574-44E0-9C7D-342876E79AF9} = {2A7A1CF5-D2DB-4E96-9F09-4C67F519D832}
-		{E342C211-8A52-4F62-8F26-ECD3E241E74D} = {2A7A1CF5-D2DB-4E96-9F09-4C67F519D832}
-		{C1E6A7FC-977A-4429-8908-B7A7C4AEB3BA} = {2A7A1CF5-D2DB-4E96-9F09-4C67F519D832}
+		{E342C211-8A52-4F62-8F26-ECD3E241E74D} = {FAF39C9E-7F28-4459-9DEA-8D27CE74DDF4}
+		{C1E6A7FC-977A-4429-8908-B7A7C4AEB3BA} = {FAF39C9E-7F28-4459-9DEA-8D27CE74DDF4}
 		{4CC37F70-CB8C-4EF2-8F13-883926FE8FC0} = {1ABAA89E-242E-47EF-B735-1410AAE6033A}
+		{16F08546-F18D-46EE-A551-5092A4958FBA} = {983B9F86-79B2-4AFC-ACA3-CACB90BA91BE}
+		{57C85C38-D056-4736-848E-B714045E643E} = {983B9F86-79B2-4AFC-ACA3-CACB90BA91BE}
+		{F989452B-D7D3-4A50-95CD-58DBD12200FD} = {983B9F86-79B2-4AFC-ACA3-CACB90BA91BE}
+		{983B9F86-79B2-4AFC-ACA3-CACB90BA91BE} = {2A7A1CF5-D2DB-4E96-9F09-4C67F519D832}
+		{14FC6F68-ED87-455F-B862-942904E595FE} = {983B9F86-79B2-4AFC-ACA3-CACB90BA91BE}
+		{88EFAC4D-FFD1-4AB8-94B7-6F15839B3F3C} = {983B9F86-79B2-4AFC-ACA3-CACB90BA91BE}
+		{FAF39C9E-7F28-4459-9DEA-8D27CE74DDF4} = {2A7A1CF5-D2DB-4E96-9F09-4C67F519D832}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {34A5513C-6E1D-4F4C-88BC-81517820D4C7}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		src\Hsu.Daemon.Shared\Hsu.Daemon.Shared.projitems*{14fc6f68-ed87-455f-b862-942904e595fe}*SharedItemsImports = 5
+		src\Hsu.Daemon.Shared\Hsu.Daemon.Shared.projitems*{16f08546-f18d-46ee-a551-5092a4958fba}*SharedItemsImports = 5
+		src\Hsu.Daemon.Shared\Hsu.Daemon.Shared.projitems*{57c85c38-d056-4736-848e-b714045e643e}*SharedItemsImports = 5
+		src\Hsu.Daemon.Shared\Hsu.Daemon.Shared.projitems*{88efac4d-ffd1-4ab8-94b7-6f15839b3f3c}*SharedItemsImports = 13
+		src\Hsu.Daemon.Hosting.Shared\Hsu.Daemon.Hosting.Shared.projitems*{acaec3b9-6f54-4daf-b091-de50d0c2cc84}*SharedItemsImports = 5
+		src\Hsu.Daemon.Hosting.Shared\Hsu.Daemon.Hosting.Shared.projitems*{c1e6a7fc-977a-4429-8908-b7a7c4aeb3ba}*SharedItemsImports = 5
+		src\Hsu.Daemon.Hosting.Shared\Hsu.Daemon.Hosting.Shared.projitems*{e342c211-8a52-4f62-8f26-ecd3e241e74d}*SharedItemsImports = 13
+		src\Hsu.Daemon.Shared\Hsu.Daemon.Shared.projitems*{f989452b-d7d3-4a50-95cd-58dbd12200fd}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal

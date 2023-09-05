@@ -1,22 +1,29 @@
-﻿using System.Runtime.Versioning;
-using Hsu.Daemon.Cli;
+﻿using Hsu.Daemon.Cli;
 
-namespace Hsu.Daemon.Mac;
+using System.Diagnostics;
+// ReSharper disable ConvertToUsingDeclaration
+
+namespace Hsu.Daemon.Systemd;
 
 #if NET5_0_OR_GREATER
-[SupportedOSPlatform("macOS")]
+[SupportedOSPlatform("linux")]
 #endif
-internal class LaunchdController : IServiceController
+
+internal class SystemdController : IServiceController
 {
     public bool Install(ServiceOptions options)
     {
         var description = options.Description;
         if (options.Description.IsNullOrWhiteSpace()) description = $"{options.Name} service";
 
-        var dotnet = OsHelper.GetDotNet();
-        if (dotnet.IsNullOrWhiteSpace()) throw new ArgumentNullException(nameof(dotnet));
+        var host = Process.GetCurrentProcess().MainModule!.FileName!;
+        var dotnet = host.EndsWith($"{Path.PathSeparator}dotnet", StringComparison.OrdinalIgnoreCase)
+            ? host
+            : OsHelper.GetDotNet();
 
-        using (var writer = new LaunchdPropertyListWriter())
+        if (dotnet.IsNullOrWhiteSpace()) throw new InvalidOperationException("The `dotnet` path is null");
+
+        using (var writer = new SystemdUnitWriter())
         {
             writer.Name = options.Name;
             writer.Bin = dotnet!;
@@ -25,22 +32,24 @@ internal class LaunchdController : IServiceController
             writer.Description = description;
             if (options.Startup == Startup.Delay)
             {
+                writer.Type = "idle";
                 if (options.Delay > TimeSpan.Zero)
                 {
-                    writer.DelaySecond = (int)options.Delay.TotalSeconds;
+                    writer.IdleSecond = (int)options.Delay.TotalSeconds;
                 }
             }
 
             writer.Write();
         }
 
+        if (Command($"daemon-reload") != 0) return false;
         if (options.Startup == Startup.Demand) return true;
-        return Command($"load {options.Name}") == 0;
+        return Command($"enable {options.Name}") == 0;
     }
 
     public bool Uninstall(string name)
     {
-        return Command($"unload -w {name}") == 0;
+        return Command($"disable {name}") == 0;
     }
 
     public void Start(string name)
@@ -60,13 +69,8 @@ internal class LaunchdController : IServiceController
 
     public ServiceStatus Status(string name)
     {
-        var ret1 = Command($"list | grep {name}", out var output1);
+        var ret1 = Command($"is-active {name}", out var output1);
 
-        if (output1.IsNullOrWhiteSpace())
-        {
-            
-        }
-        
         if (ret1 == 0 && output1.Equals("active", StringComparison.OrdinalIgnoreCase))
         {
             return ServiceStatus.Running;
@@ -86,11 +90,11 @@ internal class LaunchdController : IServiceController
 
     private int Command(string args)
     {
-        return ProcessHelper.Command("launchctl", args);
+        return ProcessHelper.Command("systemctl", args);
     }
 
     private int Command(string args, out string output)
     {
-        return ProcessHelper.Command("launchctl", args, out output);
+        return ProcessHelper.Command("systemctl", args, out output);
     }
 }

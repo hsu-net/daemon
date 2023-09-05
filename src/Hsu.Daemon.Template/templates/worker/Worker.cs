@@ -1,4 +1,8 @@
-namespace Hsu.Daemon.Worker;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace WorkerServiceSample;
 
 public class Worker : BackgroundService
 {

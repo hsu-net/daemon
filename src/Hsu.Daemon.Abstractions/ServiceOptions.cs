@@ -12,7 +12,7 @@ public record ServiceOptions
     public string Description { get; set; } = string.Empty;
     public TimeSpan Delay { get; set; } = TimeSpan.FromMinutes(1);
 
-    internal ServiceOptions() { }
+    public ServiceOptions() { }
 
     public ServiceOptions(string bin, Startup startup, string? name = null, string? description = null, string? display = null, TimeSpan? delay = null)
     {
