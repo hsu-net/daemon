@@ -13,8 +13,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Hsu.Daemon.Cli" Version="2023.309.*" />
-    <PackageReference Include="Hsu.Daemon.Windows" Version="2023.309.*" />
+    <PackageReference Include="Hsu.Daemon.Cli" Version="2024.*" />
+    <PackageReference Include="Hsu.Daemon.Windows" Version="2024.*" />
   </ItemGroup>
 
   <ItemGroup>

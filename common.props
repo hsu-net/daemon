@@ -35,6 +35,9 @@
           Project="$(MSBuildThisFileDirectory)aot.props"
           Condition="Exists('$(MSBuildThisFileDirectory)aot.props')" />
   <Import
+          Project="$(MSBuildThisFileDirectory)sourcelink.props"
+          Condition="Exists('$(MSBuildThisFileDirectory)sourcelink.props')" />
+  <Import
           Project="$(MSBuildThisFileDirectory)test.props"
           Condition="'$(IsTestProject)' == 'true' and Exists('$(MSBuildThisFileDirectory)test.props')" />
   <Import

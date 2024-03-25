@@ -9,18 +9,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Hsu.Daemon.Cli" Version="2023.309.*" />
-    <PackageReference Include="Hsu.Daemon.Hosting" Version="2023.309.*" />
+    <PackageReference Include="Hsu.Daemon.Cli" Version="2024.*" />
+    <PackageReference Include="Hsu.Daemon.Hosting" Version="2024.*" />
 
     <!--#if (Net461Chosen) -->
-    <PackageReference Include="Hsu.Daemon.Windows" Version="2023.309.*" />
+    <PackageReference Include="Hsu.Daemon.Windows" Version="2024.*" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="6.0.2" />
     <!--#else -->
-    <PackageReference Include="Hsu.Daemon.Systemd" Version="2023.309.*" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="7.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Hosting.Systemd" Version="7.0.0" />
+    <PackageReference Include="Hsu.Daemon.Systemd" Version="2024.*" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Systemd" Version="8.0.0" />
     <!--#endif -->
   </ItemGroup>
 </Project>

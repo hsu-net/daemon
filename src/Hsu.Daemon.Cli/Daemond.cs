@@ -18,10 +18,7 @@ public class Daemond : IDaemond
         _configure = configure;
         _args = args;
     }
-
-    #if NET5_0_OR_GREATER
-    [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)]
-    #endif
+    
     public bool Runnable()
     {
         _code = new CliParser(_controller, _configure).Run(_args);
