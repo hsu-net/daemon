@@ -1,4 +1,5 @@
-﻿using Hsu.Daemon.Cli;
+﻿using System.Diagnostics.CodeAnalysis;
+using Hsu.Daemon.Cli;
 
 namespace Hsu.Daemon;
 
@@ -18,6 +19,9 @@ public class Daemond : IDaemond
         _args = args;
     }
 
+    #if NET5_0_OR_GREATER
+    [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.All)]
+    #endif
     public bool Runnable()
     {
         _code = new CliParser(_controller, _configure).Run(_args);
