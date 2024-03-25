@@ -29,7 +29,7 @@ internal sealed class ServiceControlController : IServiceController
             _ => "delayed-auto"
         };
 
-        var host = Process.GetCurrentProcess().MainModule!.FileName!;
+        var host = Process.GetCurrentProcess().MainModule!.FileName;
         var bin = host.EndsWith("dotnet.exe", StringComparison.OrdinalIgnoreCase) ? $"{host} {options.Bin}" : options.Bin;
 
         var installCommand = $"create {options.Name} binPath=\"{bin} serving\" DisplayName=\"{options.Display}\" start={start}";

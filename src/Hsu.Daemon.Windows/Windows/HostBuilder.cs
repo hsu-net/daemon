@@ -38,34 +38,23 @@ public sealed class HostBuilder
     }
 }
 
-public sealed class LambdaService : DaemonService
+public sealed class LambdaService(Action onStart, Action onStop, Action? onDispose = null) : DaemonService
 {
-    private readonly Action _onStart;
-    private readonly Action _onStop;
-    private readonly Action? _onDispose;
-
-    public LambdaService(Action onStart, Action onStop, Action? onDispose = null)
-    {
-        _onStart = onStart;
-        _onStop = onStop;
-        _onDispose = onDispose;
-    }
-
     protected override void OnStart(string[] args)
     {
-        _onStart.Invoke();
+        onStart.Invoke();
         base.OnStart(args);
     }
 
     protected override void OnStop()
     {
-        _onStop.Invoke();
+        onStop.Invoke();
         base.OnStop();
     }
 
     protected override void Dispose(bool disposing)
     {
         base.Dispose(disposing);
-        _onDispose?.Invoke();
+        onDispose?.Invoke();
     }
 }

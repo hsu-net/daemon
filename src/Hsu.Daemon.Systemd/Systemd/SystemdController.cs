@@ -1,5 +1,4 @@
 ﻿using Hsu.Daemon.Cli;
-
 using System.Diagnostics;
 // ReSharper disable ConvertToUsingDeclaration
 
@@ -16,7 +15,7 @@ internal class SystemdController : IServiceController
         var description = options.Description;
         if (options.Description.IsNullOrWhiteSpace()) description = $"{options.Name} service";
 
-        var host = Process.GetCurrentProcess().MainModule!.FileName!;
+        var host = Process.GetCurrentProcess().MainModule!.FileName;
         var dotnet = host.EndsWith($"{Path.PathSeparator}dotnet", StringComparison.OrdinalIgnoreCase)
             ? host
             : OsHelper.GetDotNet();

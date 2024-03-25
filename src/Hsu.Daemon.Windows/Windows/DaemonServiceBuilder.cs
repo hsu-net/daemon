@@ -11,9 +11,9 @@ namespace Hsu.Daemon.Windows;
 
 internal sealed class DaemonServiceBuilder : IDaemonServiceBuilder
 {
-    internal ExitCode Code;
+    internal readonly ExitCode Code;
 
-    internal DaemonService Service;
+    internal readonly DaemonService Service;
 
     internal DaemonServiceBuilder(ExitCode code, DaemonService service)
     {

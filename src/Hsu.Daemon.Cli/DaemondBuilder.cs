@@ -11,7 +11,7 @@ internal class DaemondBuilder : IDaemondBuilder
         _args = args;
     }
 
-    public IDaemondBuilder Configure(Action<ServiceOptions> configure)
+    public IDaemondBuilder Configure(Action<ServiceOptions>? configure)
     {
         if (configure == null) return this;
         if (_configure == null) _configure = configure;

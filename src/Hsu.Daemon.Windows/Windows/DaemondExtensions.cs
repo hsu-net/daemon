@@ -26,13 +26,13 @@ public static class DaemondExtensions
         {
             Run(wrapper.Service, wrapper.Code);
         }
-        catch (Exception e)
+        catch (Exception)
         {
             // ignored
         }
     }
 
-    internal static void Run<T>(T service, ExitCode code, params string[] args) where T : DaemonService
+    private static void Run<T>(T service, ExitCode code, params string[] args) where T : DaemonService
     {
         switch (code)
         {
